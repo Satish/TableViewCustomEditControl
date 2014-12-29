@@ -16,7 +16,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="1000" selectionStyle="blue" showsReorderControl="YES" indentationWidth="0.0" reuseIdentifier="CustomTableViewCellIdentifier" id="kF4-rc-n6d" userLabel="UITableViewCell" customClass="CustomTableViewCell">
+                            <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="1000" selectionStyle="none" showsReorderControl="YES" indentationWidth="0.0" reuseIdentifier="CustomTableViewCellIdentifier" id="kF4-rc-n6d" userLabel="UITableViewCell" customClass="CustomTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="44" tableViewCell="kF4-rc-n6d" id="v8k-Kz-5RX">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -77,10 +77,9 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="hzg-Jg-EZI" secondAttribute="trailing" id="aUd-PN-XzQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.36862745099999999" green="0.36862745099999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.44999999999999962"/>
-                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="customEditControl" destination="cl3-mu-Hna" id="31D-uk-XUi"/>
                                     <outlet property="leadingSpaceMainViewConstraint" destination="Bel-r5-ZpO" id="rDy-J4-mKW"/>

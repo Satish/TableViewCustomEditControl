@@ -16,6 +16,8 @@ static NSString *const kTableViewCellIdentifier = @"CustomTableViewCellIdentifie
 @property (strong, nonatomic) NSArray *records;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
+@property (nonatomic, getter=isPseudoEditing) BOOL pseudoEdit;
+
 @end
 
 @implementation MyTableViewController
@@ -27,6 +29,14 @@ static NSString *const kTableViewCellIdentifier = @"CustomTableViewCellIdentifie
 
     [self addEditButton];
     self.records = @[@"Title Record 1", @"Title Record 2", @"Title Record 3", @"Title Record 4"];
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+    // Move this asignment to the method/action that
+    // handles table editing for bulk operation.
+    self.pseudoEdit = YES;
+
+    [super setEditing:editing animated:animated];
 }
 
 
@@ -91,7 +101,6 @@ static NSString *const kTableViewCellIdentifier = @"CustomTableViewCellIdentifie
         if ([tableView.delegate respondsToSelector:@selector(tableView:didDeselectRowAtIndexPath:)]) {
             [tableView.delegate tableView:tableView didDeselectRowAtIndexPath:indexPath];
         }
-
     }
 }
 

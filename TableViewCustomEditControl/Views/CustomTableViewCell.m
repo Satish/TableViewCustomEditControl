@@ -12,6 +12,7 @@ static NSInteger const kCustomEditControlWidth=42;
 
 @interface CustomTableViewCell ()
 
+@property (nonatomic, getter=isPseudoEditing) BOOL pseudoEdit;
 @property (nonatomic, getter=isDeleting) BOOL deleting;
 @property (weak, nonatomic) IBOutlet UIView *mainView;
 @property (weak, nonatomic) IBOutlet UIButton *customEditControl;
@@ -26,9 +27,12 @@ static NSInteger const kCustomEditControlWidth=42;
 #pragma mark - Life Cycle
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated {
-    [super setEditing:editing animated:animated];
-
-    [self beginEditMode];
+    if ([self.delegate isPseudoEditing]) {
+        self.pseudoEdit = editing;
+        [self beginEditMode];
+    } else {
+        [super setEditing:editing animated:animated];
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -37,15 +41,15 @@ static NSInteger const kCustomEditControlWidth=42;
     self.customEditControl.selected = selected;
 }
 
-- (void)willTransitionToState:(UITableViewCellStateMask)state {
-    if(state & UITableViewCellStateShowingDeleteConfirmationMask) {
-        self.deleting = YES;
-    } else if(!(state & UITableViewCellStateShowingDeleteConfirmationMask)) {
-        self.deleting = NO;
-    }
-
-    [super willTransitionToState:state];
-}
+//- (void)willTransitionToState:(UITableViewCellStateMask)state {
+//    if(state & UITableViewCellStateShowingDeleteConfirmationMask) {
+//        self.deleting = YES;
+//    } else if(!(state & UITableViewCellStateShowingDeleteConfirmationMask)) {
+//        self.deleting = NO;
+//    }
+//
+//    //[super willTransitionToState:state];
+//}
 
 
 #pragma mark - Public API
@@ -56,6 +60,7 @@ static NSInteger const kCustomEditControlWidth=42;
 #pragma mark - Cell custom edit control Action
 
 - (IBAction)customEditControlPressed:(id)sender {
+    // [self setSelected:YES animated:YES];
     [self.delegate selectCell:self];
 }
 
@@ -64,15 +69,11 @@ static NSInteger const kCustomEditControlWidth=42;
 
 // Animate view to show/hide custom edit control/button
 - (void)beginEditMode {
-    if (self.editing && !self.isDeleting) {
-        self.leadingSpaceMainViewConstraint.constant = 0;
-    } else {
-        self.leadingSpaceMainViewConstraint.constant = -kCustomEditControlWidth;
-    }
+    self.leadingSpaceMainViewConstraint.constant = self.isPseudoEditing ? 0 : -kCustomEditControlWidth;
+
     [UIView animateWithDuration:0.3 animations:^{
         [self.mainView.superview layoutIfNeeded];
     }];
-
 }
 
 @end

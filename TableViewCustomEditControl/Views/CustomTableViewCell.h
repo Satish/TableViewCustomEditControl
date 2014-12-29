@@ -14,6 +14,7 @@
 
 @optional
 
+@property (nonatomic, readonly, getter=isPseudoEditing) BOOL pseudoEdit;
 - (void)selectCell:(CustomTableViewCell *)cell;
 
 @end
