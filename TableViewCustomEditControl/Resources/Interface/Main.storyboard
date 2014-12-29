@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--My Table View Controller-->
@@ -15,27 +16,76 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="1000" selectionStyle="blue" showsReorderControl="YES" indentationWidth="0.0" reuseIdentifier="CustomTableViewCellIdentifier" textLabel="PCQ-rI-una" style="IBUITableViewCellStyleDefault" id="kF4-rc-n6d" userLabel="UITableViewCell" customClass="CustomTableViewCell">
+                            <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="left" horizontalHuggingPriority="1000" selectionStyle="blue" showsReorderControl="YES" indentationWidth="0.0" reuseIdentifier="CustomTableViewCellIdentifier" id="kF4-rc-n6d" userLabel="UITableViewCell" customClass="CustomTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" placeholderIntrinsicWidth="600" placeholderIntrinsicHeight="44" tableViewCell="kF4-rc-n6d" id="v8k-Kz-5RX">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PCQ-rI-una">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzg-Jg-EZI" userLabel="View - Main">
+                                            <rect key="frame" x="-34" y="8" width="626" height="28"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSF-LP-QCK" userLabel="View - Edit Control">
+                                                    <rect key="frame" x="0.0" y="0.0" width="42" height="28"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cl3-mu-Hna" userLabel="Button - Edit Control">
+                                                            <rect key="frame" x="10" y="3" width="22" height="22"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="22" id="6Um-Fo-YQI"/>
+                                                                <constraint firstAttribute="height" constant="22" id="twC-oo-Qps"/>
+                                                            </constraints>
+                                                            <state key="normal" title="B" image="edit_control">
+                                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </state>
+                                                            <state key="selected" image="edit_control_selected"/>
+                                                            <connections>
+                                                                <action selector="customEditControlPressed:" destination="kF4-rc-n6d" eventType="touchUpInside" id="WAI-uo-TLK"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="centerX" secondItem="cl3-mu-Hna" secondAttribute="centerX" id="WC6-8v-hD7"/>
+                                                        <constraint firstAttribute="centerY" secondItem="cl3-mu-Hna" secondAttribute="centerY" id="XpW-1E-b5b"/>
+                                                        <constraint firstAttribute="width" constant="42" id="fkC-U5-4Mx"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lTB-nV-gjM">
+                                                    <rect key="frame" x="57" y="0.0" width="569" height="28"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                                    <color key="textColor" red="0.52549019607843139" green="0.72156862745098038" blue="0.035294117647058823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <constraints>
+                                                <constraint firstItem="lTB-nV-gjM" firstAttribute="leading" secondItem="nSF-LP-QCK" secondAttribute="trailing" constant="15" id="8Bj-7U-drd"/>
+                                                <constraint firstItem="lTB-nV-gjM" firstAttribute="top" secondItem="hzg-Jg-EZI" secondAttribute="top" id="DpZ-yu-OsK"/>
+                                                <constraint firstItem="nSF-LP-QCK" firstAttribute="leading" secondItem="hzg-Jg-EZI" secondAttribute="leading" id="JeO-iL-uFV"/>
+                                                <constraint firstAttribute="bottom" secondItem="nSF-LP-QCK" secondAttribute="bottom" id="TTY-aO-FuJ"/>
+                                                <constraint firstItem="nSF-LP-QCK" firstAttribute="top" secondItem="hzg-Jg-EZI" secondAttribute="top" id="WAq-VU-6vb"/>
+                                                <constraint firstAttribute="bottom" secondItem="lTB-nV-gjM" secondAttribute="bottom" id="XlU-zj-Se1"/>
+                                                <constraint firstAttribute="trailing" secondItem="lTB-nV-gjM" secondAttribute="trailing" id="dvT-xx-8PA"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <constraints>
+                                        <constraint firstItem="hzg-Jg-EZI" firstAttribute="leading" secondItem="v8k-Kz-5RX" secondAttribute="leadingMargin" constant="-42" id="Bel-r5-ZpO"/>
+                                        <constraint firstItem="hzg-Jg-EZI" firstAttribute="top" secondItem="v8k-Kz-5RX" secondAttribute="topMargin" id="COC-DE-iQI"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hzg-Jg-EZI" secondAttribute="bottom" id="Hcl-b2-Gf1"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hzg-Jg-EZI" secondAttribute="trailing" id="aUd-PN-XzQ"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.36862745099999999" green="0.36862745099999999" blue="0.36862745099999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.44999999999999962"/>
-                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="titleLabel" destination="PCQ-rI-una" id="9pl-Ur-SKS"/>
+                                    <outlet property="customEditControl" destination="cl3-mu-Hna" id="31D-uk-XUi"/>
+                                    <outlet property="leadingSpaceMainViewConstraint" destination="Bel-r5-ZpO" id="rDy-J4-mKW"/>
+                                    <outlet property="mainView" destination="hzg-Jg-EZI" id="1f6-MI-1g0"/>
+                                    <outlet property="titleLabel" destination="lTB-nV-gjM" id="v2S-1U-8m2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -46,6 +96,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="gnC-Ss-0TV"/>
+                    <connections>
+                        <outlet property="tableView" destination="Dvd-7f-Jh4" id="LYF-vf-7Kl"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y4O-PH-ubV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -70,4 +123,8 @@
             <point key="canvasLocation" x="-164" y="-887"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="edit_control" width="22" height="22"/>
+        <image name="edit_control_selected" width="22" height="22"/>
+    </resources>
 </document>
